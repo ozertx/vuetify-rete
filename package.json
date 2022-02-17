@@ -9,14 +9,19 @@
   },
   "dependencies": {
     "@mdi/font": "5.9.55",
+    "ajv": "^8.10.0",
+    "axios": "^0.26.0",
     "core-js": "^3.8.3",
+    "cyber-builder": "^0.0.1",
+    "moment": "^2.29.1",
     "register-service-worker": "^1.7.2",
     "roboto-fontface": "*",
     "vue": "^3.2.13",
     "vue-class-component": "^8.0.0-0",
     "vue-router": "^4.0.3",
     "vuetify": "^3.0.0-alpha.0",
-    "webfontloader": "^1.0.0"
+    "webfontloader": "^1.0.0",
+    "yaml": "^1.10.2"
   },
   "devDependencies": {
     "@types/webfontloader": "^1.0.0",
