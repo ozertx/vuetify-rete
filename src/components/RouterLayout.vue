@@ -4,7 +4,7 @@
       <v-col cols="2">
  sdsdds
 
-<rete-layer>
+<rete-layer class="full-screen-layer">
 </rete-layer>
 
       </v-col>

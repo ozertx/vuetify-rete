@@ -62,26 +62,52 @@ export default defineComponent({
         
         editor.use(ConnectionPlugin)
         editor.use(VueRenderPlugin,{})
-        editor.use(ContextMenuPlugin);
+        editor.use(ContextMenuPlugin, {
+          searchBar: false, // true by default
+          searchKeep: (title: any) => true, // leave item when searching, optional. For example, title => ['Refresh'].includes(title)
+          delay: 100,
+          allocate(component: any) {
+            return ['Submenu'];
+          },
+          rename(component: any) {
+            return component.name;
+          },
+          items: {
+            'Click me'(){ console.log('Works!') }
+          },
+          nodeItems: {
+            'Click me'(){ console.log('Works for node!') },
+            'Delete': false, // don't show Delete item
+            'Clone': false // or Clone item
+          },
+
+        });
 
         const blocks: any = ReteBlocks
         console.log(11111,Object.keys(blocks))
 
         for( let blockName in blocks ){
-            let component: any = new blocks[blockName]()
-            editor.register(component)
-            engine.register(component)
+          let component: any = new blocks[blockName]()
+          editor.register(component)
+          engine.register(component)
+          var n1 = await component.createNode({num: 2});
+          n1.position = [80, 200];
+          editor.addNode(n1);
         }
         
-        editor.on(['process', 'noderemoved', 'connectioncreated', 'connectionremoved' ], async () => { // nodecreated
-            // if(!state.pause) {
-            //     console.log("recalculate")
-            //     await this.engine.abort();
-            //     await this.engine.process(this.editor.toJSON());
-            // }
-            // else {
-            //     console.log("paused")
-            // }
+
+
+
+        editor.on(['process', 'noderemoved', 'connectioncreated', 'connectionremoved' ], async () => { 
+          // nodecreated
+          // if(!state.pause) {
+          //     console.log("recalculate")
+          //     await this.engine.abort();
+          //     await this.engine.process(this.editor.toJSON());
+          // }
+          // else {
+          //     console.log("paused")
+          // }
         });
         // await this.editor.fromJSON(INIT_DATA);
         // editor.trigger('process');

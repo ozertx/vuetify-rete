@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
+import Vue, { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import vuetify from './plugins/vuetify'
@@ -12,6 +12,11 @@ async function start() {
   
   loadFonts()
   
+  // let vue = new Vue({ 
+     
+  // })
+
+
   console.info('CREATE APP --------')
   createApp(App)
     .use(router)

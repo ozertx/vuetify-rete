@@ -1,8 +1,8 @@
 
 
 import { Control } from 'rete';
-import TextArea from './TextArea.vue';
-import Label from './Label.vue';
+import * as TextArea from './TextArea.vue';
+import * as Label from './Label.vue';
 
 export class TextAreaControl extends Control {
 
