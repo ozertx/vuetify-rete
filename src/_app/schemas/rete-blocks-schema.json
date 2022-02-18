@@ -1,0 +1,68 @@
+{
+  "$ref": "#/definitions/block-schema",
+  "definitions": {
+    "rete-node-connections": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "required": ["data","input","node"],
+          "properties": {
+            "data": {"type":"object"},
+            "input": {"type":"string"},
+            "node": {"type":"integer"}
+          }
+        }
+      ]
+    },
+    "rete-node":{
+      "type": "object",
+      "required": ["data","id","inputs","name","outputs","position"],
+      "properties": {
+        "data": {"type":"object"},
+        "id": {"type":"integer"},
+        "inputs": {"type":"object"},
+        "name": {"type":"string"},
+        "outputs": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "connections": {"$ref": "#/definitions/rete-node-connections"}
+            }
+          }
+        },
+        "position": {
+          "type": "array",
+          "items": [{"type":"number"},{"type":"number"}]
+        }
+      }
+    },
+    "block-schema": {
+      "type": "object",
+      "required": ["id","nodes"],
+      "properties": {
+        "id": {"type":"string"},
+        "nodes": {
+          "type": "object",
+          "additionalProperties": {"$ref": "#/definitions/rete-node"}
+        }
+      }
+    },
+    "unit-block": {
+      "type": "object",
+      "require" : [ "inputs", "outputs" ],
+      "properties": {
+        "inputs": { 
+          "type": "object",
+          "additionalProperties": { "type": "string", "minLenght": 1 } 
+        },
+        "outputs": { 
+          "type": "object",
+          "additionalProperties": { "type": "string", "minLenght": 1 } 
+        }
+    
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "required": ["kind", "version", "name", "title", "routes", "units"],
+  "properties": {
+    "kind": { "type": "string" },
+    "version": { "type": "string" },
+    "title": { "type": "string" },
+    "name": { "type": "string" },
+    "routes": {
+      "type": "object"
+    },
+    "units": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/definitions/ui-unit"}
+    }
+  },
+  "definitions": {
+    "ui-unit": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" }
+      }
+    }
+  }
+}
