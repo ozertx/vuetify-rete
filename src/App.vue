@@ -1,21 +1,19 @@
 <template>
   <div>
-    
 
-    <v-overlay v-if="appState.error" >
-      {{ error }} <br> ошибка приложения
-    </v-overlay>
-
+    <div v-if="!!appState.error ">
+      {{ appState.error }} 
+      <br> ошибка приложения
+    </div>
     <v-app v-else>
 
+      <div >
+        layer11  333333333333333333
+      </div>
 
-    <div >
-      layer11  333333333333333333
-    </div>
-
-    <!-- <div class="full-screen-layer">
-      layer12  
-    </div> -->
+      <!-- <div class="full-screen-layer">
+        layer12  
+      </div> -->
 
     <div class="app-fab-widget">
       <v-container 
@@ -23,36 +21,32 @@
        @mouseenter=" onMouseEnterMenu " 
        @mouseleave=" onLeaveMenu "
       >
-        {{ onFab }}
-        <v-btn
-        >
-          <v-icon dark>
-            mdi-android
-          </v-icon>
-        </v-btn>
-
+        <ui-unit view="icon60" unit="appLogo"  />
 
       </v-container>
 
       <v-container 
-      class="top"
+      class="top pa-0 ma-0"
        @mouseenter=" onMouseEnterMenu " 
        @mouseleave=" onLeaveMenu "
       >
-        {{ onFab }}
 
-                  <v-icon dark>
-            mdi-android
-          </v-icon>
+        <ui-unit view="icon60" unit="service"  />
+        <ui-unit view="icon60" unit="profile"  />
+
       </v-container>
 
 
       <v-container 
-      class="right"
+      class="right pa-0 ma-0"
        @mouseenter=" onMouseEnterMenu " 
        @mouseleave=" onLeaveMenu "
       >
-        {{ onFab }}
+
+        <ui-unit view="icon60" unit="service1"  />
+        <ui-unit view="icon60" unit="service2"  />
+
+
       </v-container>
     </div>
 
@@ -85,6 +79,9 @@
   }
 
   .app-fab-widget .circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute; 
     top:0px; 
     right:0px;
@@ -96,18 +93,24 @@
 
   .app-fab-widget .top {
     position: absolute; 
+    width: auto;
     top:0px; 
     right:120px;
-    height:48px;
+    height:60px;
     background:#22ee00 !important;
-    z-index: 1000;
+    z-index: 1002;
+  }
+
+  .app-fab-widget .top > * {
+    display:table-cell
   }
 
   .app-fab-widget .right {
     position: absolute; 
     top:120px; 
     right:0px;
-    width:48px;
+    width:60px;
+    height:auto;
     background:#22ee00 !important;
     z-index: 1000;
   }
@@ -180,10 +183,13 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { appState } from './_app'
+import UiUnit from './components/UiUnit.vue'
 
 export default defineComponent({
   name: 'App',
-
+  components: {
+    UiUnit
+  },
   data () {
     return {
       onFab: 0,

@@ -4,7 +4,7 @@ import router from './router'
 import vuetify from './plugins/vuetify'
 import { loadFonts } from './plugins/webfontloader'
 
-import { loadApp } from './_app'
+import { loadApp, appState } from './_app'
 
 async function start() {
 
@@ -12,6 +12,7 @@ async function start() {
   
   loadFonts()
   
+  console.info('CREATE APP --------')
   createApp(App)
     .use(router)
     .use(vuetify)

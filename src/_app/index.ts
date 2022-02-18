@@ -8,7 +8,7 @@ import appConfig from './app-config'
 const SCHEMAS: { [keyof: string]: any } = {
 	"app-config": {
 		"type": "object",
-		"required": ["kind", "version", "name", "title", "routes"],
+		"required": ["kind", "version", "name", "title", "routes", "units"],
 		"properties": {
 			"kind": { "type": "string" },
       "version": { "type": "string" },
@@ -16,9 +16,21 @@ const SCHEMAS: { [keyof: string]: any } = {
       "name": { "type": "string" },
 			"routes": {
 				"type": "object"
-			}
+			},
+      "units": {
+        "type": "object",
+        "additionalProperties": { "$ref": "#/definitions/ui-unit"}
+      }
 		},
-		"additionalProperties": false
+		"additionalProperties": false,
+    "definitions": {
+      "ui-unit": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+        }
+      }
+    }
 	}
 }
 
@@ -31,11 +43,22 @@ const appState: any = {
   "error": null
 }
 
+const appUnits: any = {
+  "service": {
+
+  }
+}
+
 const loadApp = async () => {
 
   if(!validate['app-config'](appConfig)) {
-    console.error(`app-config validation errors`,validate['app-config'].errors)
-    throw new Error(`invalid App schema`)
+    console.log(`app-config validation errors`,validate['app-config'].errors)
+    appState.error = {
+      error: `invalid App schema`,
+      item: appConfig,
+      errors: validate['app-config'].errors, 
+    }
+    return
   }
 
   APP.config = appConfig
@@ -43,7 +66,7 @@ const loadApp = async () => {
 }
 
 export {
-  yaml, ajv, validate, axios, moment, loadApp, APP, appState
+  yaml, ajv, validate, axios, moment, loadApp, APP, appState, appUnits
 }
 
 

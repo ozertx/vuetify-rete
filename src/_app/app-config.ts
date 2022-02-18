@@ -7,6 +7,11 @@ const CONFIG = {
     "label":{},
     "route1":{},
     "route2":{}
+  },
+  "units": {
+    "service": {
+      
+    }
   }
 }
 
