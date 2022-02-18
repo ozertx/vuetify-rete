@@ -1,16 +1,14 @@
 <template>
   <v-container>
+
+
     <v-row class="text-center">
       <v-col cols="2">
- sdsdds
-
-<rete-layer class="full-screen-layer">
-</rete-layer>
-
+       sdsdds
       </v-col>
 
       <v-col class="mb-4">
-dfdfdfdfdfsdsdsd {{ appState }}
+      dfdfdfdfdfsdsdsd {{ appState }}
       </v-col>
 
     </v-row>
@@ -20,11 +18,10 @@ dfdfdfdfdfsdsdsd {{ appState }}
 <script lang='ts'>
 import { defineComponent } from 'vue'
 import { appState } from '../_app'
-import ReteLayer from '../components/rete/ReteLayer.vue'
 
 export default defineComponent({
   name: 'RouterLayout',
-  components: { ReteLayer },
+  components: {  },
   data () {
     return {
       appState

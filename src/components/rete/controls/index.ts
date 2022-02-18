@@ -1,5 +1,3 @@
-
-
 import { Control } from 'rete';
 import * as TextArea from './TextArea.vue';
 import * as Label from './Label.vue';

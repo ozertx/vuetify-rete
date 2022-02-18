@@ -8,6 +8,9 @@
     <v-app v-else>
 
 
+
+
+
       <div class="app-fab-widget">
         <v-container 
         class="circle"
@@ -56,6 +59,9 @@
         @close=" state.modal.isOpen = false " >
         </component>
       </v-dialog> -->
+
+      <rete-layer :L=" 1" class="full-screen-layer" style="z-index:600;">
+      </rete-layer>
 
     </v-app>
 
@@ -177,11 +183,12 @@
 import { defineComponent } from 'vue'
 import { appState } from './_app'
 import UiUnit from './components/UiUnit.vue'
+import ReteLayer from './components/rete/ReteLayer.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
-    UiUnit
+    UiUnit, ReteLayer
   },
   data () {
     return {

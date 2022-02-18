@@ -1,7 +1,7 @@
 import * as Control from '../controls'
 import Socket from '../ReteSockets'
 import Rete from "rete";
-// import node from '../components/CustomNode.vue'
+import node from '../ReteCustomNode.vue'
 
 // export * from './split'
 // export * from './map'
@@ -9,11 +9,23 @@ import Rete from "rete";
 
 
 class TextComponent extends Rete.Component {
+
+  render: any
+  component: any
+  props: any
+
 	constructor() {
 		super('Text');
+		// this.data = { render: 'vue', component: node, props: {
+    //   vue:1
+    // } }
+    // this.render = 'vue', 
+    // this.component = node, 
+    // this.props = {} 
+
 	}
 
-	builder(node: any) {
+	async builder(node: any) {
 
 		const out = new Rete.Output('out1', 'Text', Socket.text);
 		node.addOutput(out)
@@ -21,7 +33,7 @@ class TextComponent extends Rete.Component {
 		return node
 	}
 
-	worker(node: any, inputs: any, outputs: any) {
+	async worker(node: any, inputs: any, outputs: any) {
 		console.log('in-->',node.name,inputs)
 		console.log(node.name,'out-->',outputs)
 		console.log(node.data)

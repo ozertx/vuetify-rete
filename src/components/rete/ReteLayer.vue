@@ -15,6 +15,10 @@ import ReteBlocks from './blocks'
 
 import { appState  } from '../../_app'
 import axios from 'axios'
+import ReteCustomNode from './ReteCustomNode.vue'
+
+
+// import { createVuetify } from 'vuetify'
 
 // const VueRenderPlugin: any = import('rete-vue-render-plugin') as any
 // const ContextMenuPlugin: any = import('rete-context-menu-plugin') as any
@@ -54,47 +58,40 @@ export default defineComponent({
         // console.log(container.parentElement)
         console.log('--------------------------mount')
 
-        const editor = new NodeEditor(ENGINE_V, container)
-        const engine = new Engine(ENGINE_V);
+        let editor = new NodeEditor(ENGINE_V, container)
+        let engine = new Engine(ENGINE_V);
 
-        (this as any).editor = editor as any
-        (this as any).engine = engine as any
+        // (this as any).editor = editor as any
+        // (this as any).engine = engine as any
         
-        editor.use(ConnectionPlugin)
-        editor.use(VueRenderPlugin,{})
-        editor.use(ContextMenuPlugin, {
-          searchBar: false, // true by default
-          searchKeep: (title: any) => true, // leave item when searching, optional. For example, title => ['Refresh'].includes(title)
-          delay: 100,
-          allocate(component: any) {
-            return ['Submenu'];
-          },
-          rename(component: any) {
-            return component.name;
-          },
-          items: {
-            'Click me'(){ console.log('Works!') }
-          },
-          nodeItems: {
-            'Click me'(){ console.log('Works for node!') },
-            'Delete': false, // don't show Delete item
-            'Clone': false // or Clone item
-          },
 
-        });
+        editor.use(ConnectionPlugin)
+        
+        console.log(ReteCustomNode)
+        
+        editor.use(VueRenderPlugin,{
+          component: ReteCustomNode // optional
+        })
+        // editor.use(ContextMenuPlugin, { });
 
         const blocks: any = ReteBlocks
-        console.log(11111,Object.keys(blocks))
+
+        const components: any = { }
 
         for( let blockName in blocks ){
-          let component: any = new blocks[blockName]()
-          editor.register(component)
-          engine.register(component)
-          var n1 = await component.createNode({num: 2});
-          n1.position = [80, 200];
-          editor.addNode(n1);
+          components[blockName] = new blocks[blockName]()
+          editor.register(components[blockName])
+          engine.register(components[blockName])
+
         }
-        
+
+        var n1 = await components['TextComponent'].createNode({num: 2});
+        n1.position = [80, 200];
+        n1.props = {}
+
+        console.log(n1)
+
+        editor.addNode(n1);
 
 
 
