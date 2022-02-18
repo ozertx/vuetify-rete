@@ -1,7 +1,6 @@
 import * as Control from '../controls'
 import Socket from '../ReteSockets'
 import Rete from "rete";
-import node from '../ReteCustomNode.vue'
 
 // export * from './split'
 // export * from './map'

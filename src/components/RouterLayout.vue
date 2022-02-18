@@ -4,11 +4,11 @@
 
     <v-row class="text-center">
       <v-col cols="2">
-       sdsdds
+       MegaVue
       </v-col>
 
       <v-col class="mb-4">
-      dfdfdfdfdfsdsdsd {{ appState }}
+       bombastic vue app
       </v-col>
 
     </v-row>

@@ -60,7 +60,7 @@
         </component>
       </v-dialog> -->
 
-      <rete-layer :L=" 1" class="full-screen-layer" style="z-index:600;">
+      <rete-layer class="full-screen-layer" style="z-index:600;">
       </rete-layer>
 
     </v-app>
@@ -70,6 +70,12 @@
 
 
 <style lang="scss"> 
+
+  .rete-repeat-bg {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/SVG_logo.svg/240px-SVG_logo.svg.png");
+    background-repeat: repeat-x;
+    background-size: 240px 240px;
+  }
   
   .app-fab-widget {
     position: absolute; 
@@ -197,11 +203,11 @@ export default defineComponent({
     }
   },
   methods:{
-    onMouseEnterMenu(e: any) {
+    onMouseEnterMenu() {
       console.log(1)
       this.onFab = 1
     },
-    onLeaveMenu(e: any ) {
+    onLeaveMenu() {
       this.onFab = 0
     },
   }

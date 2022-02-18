@@ -4,7 +4,7 @@
 
       <div v-if="currentUnit"> 
 
-        <v-btn icon x-small>
+        <v-btn icon x-small flat>
           <v-icon >{{ currentUnit.icon || 'mdi-blur' }}</v-icon>
         </v-btn>
       
