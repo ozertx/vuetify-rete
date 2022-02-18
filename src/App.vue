@@ -7,48 +7,41 @@
     </div>
     <v-app v-else>
 
-      <div >
-        layer11  333333333333333333
+
+      <div class="app-fab-widget">
+        <v-container 
+        class="circle"
+        @mouseenter=" onMouseEnterMenu " 
+        @mouseleave=" onLeaveMenu "
+        >
+          <ui-unit view="icon60" unit="appLogo"  />
+
+        </v-container>
+
+        <v-container 
+        class="top pa-0 ma-0"
+        @mouseenter=" onMouseEnterMenu " 
+        @mouseleave=" onLeaveMenu "
+        >
+
+          <ui-unit view="icon60" unit="service"  />
+          <ui-unit view="icon60" unit="profile"  />
+
+        </v-container>
+
+
+        <v-container 
+        class="right pa-0 ma-0"
+        @mouseenter=" onMouseEnterMenu " 
+        @mouseleave=" onLeaveMenu "
+        >
+
+          <ui-unit view="icon60" unit="layer001"  />
+          <ui-unit view="icon60" unit="layer002"  />
+
+
+        </v-container>
       </div>
-
-      <!-- <div class="full-screen-layer">
-        layer12  
-      </div> -->
-
-    <div class="app-fab-widget">
-      <v-container 
-      class="circle"
-       @mouseenter=" onMouseEnterMenu " 
-       @mouseleave=" onLeaveMenu "
-      >
-        <ui-unit view="icon60" unit="appLogo"  />
-
-      </v-container>
-
-      <v-container 
-      class="top pa-0 ma-0"
-       @mouseenter=" onMouseEnterMenu " 
-       @mouseleave=" onLeaveMenu "
-      >
-
-        <ui-unit view="icon60" unit="service"  />
-        <ui-unit view="icon60" unit="profile"  />
-
-      </v-container>
-
-
-      <v-container 
-      class="right pa-0 ma-0"
-       @mouseenter=" onMouseEnterMenu " 
-       @mouseleave=" onLeaveMenu "
-      >
-
-        <ui-unit view="icon60" unit="service1"  />
-        <ui-unit view="icon60" unit="service2"  />
-
-
-      </v-container>
-    </div>
 
       <v-main>
         <router-view></router-view>
@@ -87,7 +80,7 @@
     right:0px;
     width:120px;
     height:120px;
-    background:#22ee00 !important;
+    // background:#22ee00 !important;
     z-index: 1001;
   }
 
@@ -97,7 +90,7 @@
     top:0px; 
     right:120px;
     height:60px;
-    background:#22ee00 !important;
+    // background:#22ee00 !important;
     z-index: 1002;
   }
 
@@ -111,7 +104,7 @@
     right:0px;
     width:60px;
     height:auto;
-    background:#22ee00 !important;
+    // background:#22ee00 !important;
     z-index: 1000;
   }
 

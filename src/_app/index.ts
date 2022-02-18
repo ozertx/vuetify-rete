@@ -45,8 +45,21 @@ const appState: any = {
 
 const appUnits: any = {
   "service": {
+    "icon": "mdi-cog"
+  },
+  "profile": {
+    "icon": "mdi-account"
 
-  }
+  },
+  "appLogo": {
+    "icon": "mdi-android"
+  },
+  "layer001": {
+    "icon": "mdi-layers"
+  },
+  "layer002": {
+    "icon": "mdi-layers"
+  },
 }
 
 const loadApp = async () => {

@@ -5,7 +5,7 @@
       <div v-if="currentUnit"> 
 
         <v-btn icon x-small>
-          <v-icon color="red" >{{ currentUnit.icon || 'mdi-blur' }}</v-icon>
+          <v-icon >{{ currentUnit.icon || 'mdi-blur' }}</v-icon>
         </v-btn>
       
       </div>
