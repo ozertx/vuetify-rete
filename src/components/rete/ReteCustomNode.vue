@@ -1,7 +1,6 @@
 <template>
 <div>
 
-
   <template v-if="inputs().length || outputs().length">
 
     <div v-for="(input,id) in inputs()" :key="id" >
@@ -23,35 +22,35 @@
  
   import { createApp, defineComponent } from 'vue'
 
-	import VueRender from 'rete-vue-render-plugin';
+  import VueRender from 'rete-vue-render-plugin';
   import vuetify from '../../plugins/vuetify';
   import NodeCard from './NodeCard.vue';
   
-  const coomponent = defineComponent({
-		name: 'reteNode',
+  const cmpDefinition = defineComponent({
+    name: 'reteNode',
     props:  ['node', 'editor', 'bindSocket', 'bindControl'],
-		mixins: VueRender.Node.mixins,
-		components: { 
+    mixins: VueRender.Node.mixins,
+    components: { 
       Socket:VueRender.Socket
-		},
+    },
     mounted() {
       createApp(NodeCard)
         .use(vuetify)
         .mount(this.$refs.vueapp as any)
     },
-		data() {
-			return {
-				state: {
-					pause: false
-				}
-			}
-		},
-		methods: {
-		}
-	})
+    data() {
+      return {
+        state: {
+          pause: false
+        }
+      }
+    },
+    methods: {
+    }
+  })
 
 
-	export default coomponent
+  export default cmpDefinition
 
 </script>
 
