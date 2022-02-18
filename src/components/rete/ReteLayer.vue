@@ -5,24 +5,21 @@
 
 <script lang='ts'>
 
-  import { defineComponent } from 'vue'
+import { defineComponent } from 'vue'
 
-  import { NodeEditor, Engine } from "rete";
-  import ConnectionPlugin from 'rete-connection-plugin';
-  import VueRenderPlugin from 'rete-vue-render-plugin';
-  import ContextMenuPlugin from 'rete-context-menu-plugin';
+import { NodeEditor, Engine } from "rete";
+import ConnectionPlugin from 'rete-connection-plugin';
+import VueRenderPlugin from 'rete-vue-render-plugin';
+import ContextMenuPlugin from 'rete-context-menu-plugin';
+import ReteBlocks from './blocks'
 
-// eslint-disable-next-line
+import { appState  } from '../../_app'
+import axios from 'axios'
 
-  import ReteBlocks from './blocks'
-  
-  import { appState  } from '../../_app'
-  import axios from 'axios'
+// const VueRenderPlugin: any = import('rete-vue-render-plugin') as any
+// const ContextMenuPlugin: any = import('rete-context-menu-plugin') as any
 
-  // const VueRenderPlugin: any = import('rete-vue-render-plugin') as any
-  // const ContextMenuPlugin: any = import('rete-context-menu-plugin') as any
-
-  const ENGINE_V = "block-schema-processor@1.0"
+const ENGINE_V = "block-schema-processor@1.1.0"
 
 export default defineComponent({
     name: 'ReteLayer',
@@ -60,8 +57,8 @@ export default defineComponent({
         const editor = new NodeEditor(ENGINE_V, container)
         const engine = new Engine(ENGINE_V);
 
-        this.$attrs.editor = editor
-        this.$attrs.engine = engine
+        (this as any).editor = editor as any
+        (this as any).engine = engine as any
         
         editor.use(ConnectionPlugin)
         editor.use(VueRenderPlugin,{})

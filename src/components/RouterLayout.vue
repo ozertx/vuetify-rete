@@ -2,12 +2,11 @@
   <v-container>
     <v-row class="text-center">
       <v-col cols="2">
-        <v-img
-          :src="require('../assets/logo.svg')"
-          class="my-3"
-          contain
-          height="200"
-        />
+ sdsdds
+
+<rete-layer>
+</rete-layer>
+
       </v-col>
 
       <v-col class="mb-4">
@@ -21,10 +20,11 @@ dfdfdfdfdfsdsdsd {{ appState }}
 <script lang='ts'>
 import { defineComponent } from 'vue'
 import { appState } from '../_app'
+import ReteLayer from '../components/rete/ReteLayer.vue'
 
 export default defineComponent({
   name: 'RouterLayout',
-
+  components: { ReteLayer },
   data () {
     return {
       appState

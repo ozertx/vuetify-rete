@@ -20,7 +20,9 @@ export class TextAreaControl extends Control {
 		const ctx = this.vueContext || this.props;
 		ctx.value = value;
 	}
-	onChange() { }
+	onChange() { 
+    //
+  }
 }
 
 export class LabelControl extends Control {
@@ -39,5 +41,7 @@ export class LabelControl extends Control {
 		const ctx = this.vueContext || this.props;
 		ctx.value = value;
 	}
-	onChange() { }
+	onChange() { 
+    //
+  }
 }

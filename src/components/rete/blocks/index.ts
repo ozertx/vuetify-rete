@@ -15,7 +15,7 @@ class TextComponent extends Rete.Component {
 
 	builder(node: any) {
 
-		let out = new Rete.Output('out1', 'Text', Socket.text);
+		const out = new Rete.Output('out1', 'Text', Socket.text);
 		node.addOutput(out)
 		node.addControl(new Control.TextAreaControl(this.editor, 'value', 'Text', false))
 		return node
