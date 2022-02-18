@@ -25,6 +25,11 @@ const SCHEMAS: { [keyof: string]: any } = {
 const ajv = new Ajv({ allErrors: true })
 const validate = Object.keys(SCHEMAS).reduce( (acc: any, key) => { acc[key] = ajv.compile(SCHEMAS[key]); return acc } , {} )
 
+const APP: any = {}
+const appState: any = {
+  "status": "active",
+  "error": null
+}
 
 const loadApp = async () => {
 
@@ -33,14 +38,12 @@ const loadApp = async () => {
     throw new Error(`invalid App schema`)
   }
 
-  const newApp = { appConfig }
-
-  return newApp
-
+  APP.config = appConfig
+  return APP
 }
 
 export {
-  yaml, ajv, validate, axios, moment, loadApp
+  yaml, ajv, validate, axios, moment, loadApp, APP, appState
 }
 
 
