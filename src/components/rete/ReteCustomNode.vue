@@ -34,12 +34,15 @@
       Socket:VueRender.Socket
     },
     mounted() {
-      createApp(NodeCard)
+      const app = createApp(NodeCard)
         .use(vuetify)
-        .mount(this.$refs.vueapp as any)
+        .mount(this.$refs.vueapp as any) 
+      
+      this.$data.app = app as any
     },
     data() {
       return {
+        app: null,
         state: {
           pause: false
         }

@@ -7,10 +7,6 @@
     </div>
     <v-app v-else>
 
-
-
-
-
       <div class="app-fab-widget">
         <v-container 
         class="circle"
@@ -204,7 +200,6 @@ export default defineComponent({
   },
   methods:{
     onMouseEnterMenu() {
-      console.log(1)
       this.onFab = 1
     },
     onLeaveMenu() {

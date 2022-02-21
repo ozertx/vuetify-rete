@@ -15,16 +15,12 @@ class TextComponent extends Rete.Component {
 
 	constructor() {
 		super('Text');
-		// this.data = { render: 'vue', component: node, props: {
-    //   vue:1
-    // } }
-    // this.render = 'vue', 
-    // this.component = node, 
-    // this.props = {} 
-
 	}
 
 	async builder(node: any) {
+
+    node.addInput(new Rete.Input('inParam', 'Text', Socket.json))
+    node.addOutput(new Rete.Output('invalid', 'Text', Socket.json))
 
 		const out = new Rete.Output('out1', 'Text', Socket.text);
 		node.addOutput(out)

@@ -46,7 +46,7 @@ export default defineComponent({
   async mounted() {
     const container = this.$refs.rete as HTMLElement
 
-    console.log('-------------------------- MOUNT')
+    console.log('-------------------------- MOUNT RETE LAYER')
 
     let editor = new NodeEditor(ENGINE_V, container)
     let engine = new Engine(ENGINE_V);
@@ -69,11 +69,19 @@ export default defineComponent({
 
     }
 
-    let n1 = await components['TextComponent'].createNode({num: 2});
-    n1.position = [80, 200];
-    n1.props = {}
+    ( new Array(5).fill("") ).map( async (e,id) => {
+      const newNode = await components['TextComponent'].createNode({num: 2 + id})
+      console.log(id)
+      newNode.position = [80 * id, 400 * id];
+    
 
-    editor.addNode(n1);
+      editor.addNode(newNode);
+      return newNode
+    })
+
+
+    console.log('-------------------------- RETE STARTE')
+
 
     editor.on(['process', 'noderemoved', 'connectioncreated', 'connectionremoved' ], async () => { 
       // nodecreated
