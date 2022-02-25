@@ -13,7 +13,7 @@ import VueRenderPlugin from 'rete-vue-render-plugin';
 
 import { appState  } from '../../_app'
 
-import { Components, CreateNode, register } from './components'
+import { CreateNode, register } from './components'
 
 import ReteCustomNode from './ReteCustomNode.vue'
 

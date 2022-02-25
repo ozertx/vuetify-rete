@@ -2,8 +2,8 @@ const definitions: { [key:string]: any } = {
 
   "constant": {
     "kind": "CardComponent",
-    "params": {
-      "value": "1222"
+    "defaultParams": {
+      "value": "0"
     },
     "inputs": {},
     "outputs": {

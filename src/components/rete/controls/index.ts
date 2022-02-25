@@ -1,71 +1,35 @@
-import { Control } from 'rete';
-import * as TextArea from './TextArea.vue';
-import * as Label from './Label.vue';
+import { CardControl } from "./CardControl"
+import ControlDefinitions from './ControlDefinitions'
+import * as Control from '../controls'
+import Socket from '../ReteSockets'
+import Rete from "rete";
+import { validate } from '../../../_app'
+
+
+const nameIt = (name: string, cls: any) => ({ [name]: class extends cls { } })[name];
 
 
 
+const Controls: any = {}
 
+for (const controlName in ControlDefinitions) {
+  const def: any = ControlDefinitions[controlName]
 
-export class BaseCardControl extends Control {
+  if (!validate['control-definition-schema'](def)) {
 
-  component: any
-  props: any
-  vueContext: any
+    console.log(`control-definition-schema`, def)
+    console.log(validate['control-definition-schema'].errors)
+    const error = {
+      error: `invalid control-definition-schema schema`,
+      item: def,
+      errors: validate['app-config'].errors,
+    }
 
-  constructor(emitter: any, key: any, type: any, readonly: any) {
-    super(key);
-    this.component = TextArea;
-    this.props = { emitter, ikey: key, type, readonly, change: () => this.onChange() };
+    throw new Error(error.error)
   }
-  setValue(value: any) {
-
-    const ctx = this.vueContext || this.props;
-    ctx.value = value;
-  }
-  onChange() {
-    //
-  }
+  
+  Controls[controlName] = nameIt(controlName, CardControl);
 }
 
 
-export class TextAreaControl extends Control {
-
-  component: any
-  props: any
-  vueContext: any
-
-  constructor(emitter: any, key: any, type: any, readonly: any) {
-    super(key);
-    this.component = TextArea;
-    this.props = { emitter, ikey: key, type, readonly, change: () => this.onChange() };
-  }
-  setValue(value: any) {
-
-    const ctx = this.vueContext || this.props;
-    ctx.value = value;
-  }
-  onChange() { 
-    //
-  }
-}
-
-export class LabelControl extends Control {
-
-  component: any
-  props: any
-  vueContext: any
-
-  constructor(emitter: any, key: any, type: any, readonly: any) {
-    super(key);
-    this.component = Label;
-    this.props = { emitter, ikey: key, type, readonly, change: () => this.onChange() };
-  }
-  setValue(value: any) {
-
-    const ctx = this.vueContext || this.props;
-    ctx.value = value;
-  }
-  onChange() { 
-    //
-  }
-}
+export default Controls

@@ -1,0 +1,30 @@
+{
+  "$ref": "#/definitions/nodeDefinition",
+  "definitions": {
+    "nodeDefinition": {
+      "type": "object",
+      "required": ["kind", "defaultParams", "inputs", "outputs", "controls"],
+      "properties": {
+        "kind": { "type": "string" },
+        "defaultParams": {"type":"object"},
+        "outputs": { "$ref": "#/definitions/outputs" },
+        "inputs": { "type": "object" },
+        "controls": { "type": "object" }
+      }
+    },
+    "outputs": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/definitions/output" }
+    },
+    "output": {
+      "type": "object",
+      "required": ["title", "socket", "calc"],  
+
+      "properties": {
+        "title": { "type": "string" },
+        "socket": { "type": "string" },
+        "calc": { }
+      }
+    }
+  }
+}

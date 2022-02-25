@@ -4,6 +4,8 @@ import axios from 'axios'
 import moment from 'moment'
 
 import appConfigSchema from './schemas/app-config-schema.json'
+import nodeDefinitionSchema from './schemas/node-definition-schema.json'
+import controlDefinitionSchema from './schemas/control-definition-schema.json'
 import reteBlocksSchema from './schemas/rete-blocks-schema.json'
 import unitConfig from 'cyber-builder/cyber-builder/schemas/unit-config.json'
 import buildConfig from 'cyber-builder/cyber-builder/schemas/build-config.json'
@@ -12,6 +14,8 @@ const SCHEMAS: { [keyof: string]: any } = {
   "app-config": appConfigSchema,
   "rete-blocks-schema": reteBlocksSchema,
   "unit-config": unitConfig,
+  "node-definition-schema": nodeDefinitionSchema,
+  "control-definition-schema": controlDefinitionSchema,
   "build-config": buildConfig,
 }
 

@@ -1,4 +1,4 @@
-import * as Control from '../controls'
+import Controls from '../controls'
 import Socket from '../ReteSockets'
 import Rete from "rete";
 
@@ -30,18 +30,19 @@ class CardComponent extends Rete.Component {
 
     for(const name in this.config.inputs) {
       const conf = this.config.inputs[name]
-      node.addInput(new Rete.Input(name, conf.title, Socket.json))
+      node.addInput(new Rete.Input(name, conf.title, Socket.json, conf))
     }
 
     for (const name in this.config.outputs) {
       const conf = this.config.outputs[name]
-      node.addOutput(new Rete.Output(name, conf.title, Socket.json))
+      node.addOutput(new Rete.Output(name, conf.title, Socket.json, conf))
     }
     
     for (const name in this.config.controls) {
       const conf = this.config.controls[name]
 
-      node.addControl(new Control.TextAreaControl(this.editor, name, conf.title, false))
+      const control = new Controls[name](this.editor, name, conf.title, false, conf)
+      node.addControl(control)
     }
 		return node
 	}

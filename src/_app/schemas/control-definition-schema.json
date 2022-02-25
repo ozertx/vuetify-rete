@@ -1,0 +1,14 @@
+{
+  "$ref": "#/definitions/nodeDefinition",
+  "definitions": {
+    "nodeDefinition": {
+      "type": "object",
+      "required": ["kind", "type", "defaultParams"],
+      "properties": {
+        "kind": { "type": "string" },
+        "type": { "enum":["TextArea", "Label"]},
+        "defaultParams": {"type":"object"}
+      }
+    }
+  }
+}
