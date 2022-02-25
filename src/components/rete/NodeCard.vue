@@ -5,6 +5,9 @@
     outlined
   >
     props: {{ nodeConfig  }}
+    <br>
+    <br>
+    nodeInstance: {{nodeInstance}}
     <v-list-item three-line>
       <v-list-item-content>
         <div class="text-overline mb-4">
@@ -43,14 +46,31 @@
   const componentDefinition = defineComponent({
 		name: 'NodeCard',
     props: {
+      editor: {
+        type: Object,
+        required:true
+      },
       node: {
         type: Object,
         required:true
-      }
+      },
+      instance: {
+        type: Object,
+        required:true
+      },
     },
 		components: { 
 		},
     computed: {
+      nodeInstance() {
+        const { editor, node, instance } = this.$props
+        return {
+          inputs: instance.inputs(),
+          outputs: instance.outputs(),
+          controls: instance.controls(),
+          selected: editor.selected.contains(node) ? 'selected' : ''
+        }
+      },
       nodeConfig() {
         const node = this.$props.node
         return {

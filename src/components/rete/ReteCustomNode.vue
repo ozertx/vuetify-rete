@@ -13,8 +13,11 @@
     </div>
     
   </template>
- 
-  <div ref="vueapp"> </div>
+
+
+  <div ref="vueapp">
+  </div>
+
 </div>
 </template>
 
@@ -35,7 +38,13 @@
     },
     mounted() {
       console.log(this.$props)
-      const app = createApp(NodeCard, { node: this.$props.node })
+      
+      const app = createApp(NodeCard, { 
+        instance: this, 
+        node: this.$props.node, 
+        editor: this.$props.editor 
+      })
+
       app
         .use(vuetify)
         .mount(this.$refs.vueapp as any) 
