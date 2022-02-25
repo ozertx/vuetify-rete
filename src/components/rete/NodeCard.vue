@@ -4,10 +4,11 @@
     max-width="344"
     outlined
   >
+    props: {{ nodeConfig  }}
     <v-list-item three-line>
       <v-list-item-content>
         <div class="text-overline mb-4">
-          OVERLINE
+          OVERLINE 
         </div>
         <v-list-item-title class="text-h5 mb-1">
           Headline 5
@@ -23,7 +24,7 @@
     </v-list-item>
 
     <v-card-actions>
-      <v-btn
+      <v-btn @click=" lnode.props.data.num++ "
         outlined
         rounded
         text
@@ -41,15 +42,32 @@
   
   const componentDefinition = defineComponent({
 		name: 'NodeCard',
-    props:  ['node', 'editor', 'bindSocket', 'bindControl'],
+    props: {
+      node: {
+        type: Object,
+        required:true
+      }
+    },
 		components: { 
 		},
+    computed: {
+      nodeConfig() {
+        const node = this.$props.node
+        return {
+          name: node.name,
+          data: node.data,
+          id: node.id,
+          inputs: node.inputs,
+          outputs: node.outputs,
+        }
+      }
+    },
     created() {
-      console.log('nodecard')
       //
     },
 		data() {
 			return {
+
 			}
 		},
 		methods: {

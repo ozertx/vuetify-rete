@@ -13,7 +13,7 @@
     </div>
     
   </template>
-
+ 
   <div ref="vueapp"> </div>
 </div>
 </template>
@@ -34,7 +34,9 @@
       Socket:VueRender.Socket
     },
     mounted() {
-      const app = createApp(NodeCard)
+      console.log(this.$props)
+      const app = createApp(NodeCard, { node: this.$props.node })
+      app
         .use(vuetify)
         .mount(this.$refs.vueapp as any) 
       
@@ -43,6 +45,7 @@
     data() {
       return {
         app: null,
+        value:{ a:1 },
         state: {
           pause: false
         }

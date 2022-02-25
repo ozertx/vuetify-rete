@@ -10,3 +10,4 @@ declare module '*.vue' {
 declare module 'rete-context-menu-plugin'
 declare module 'rete-vue-render-plugin'
 declare module 'cyber-builder'
+declare module 'vue-json-tree-view'

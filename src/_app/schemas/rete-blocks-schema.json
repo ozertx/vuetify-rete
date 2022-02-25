@@ -19,10 +19,13 @@
       "type": "object",
       "required": ["data","id","inputs","name","outputs","position"],
       "properties": {
+        "name": {
+          "description": "название компонента",
+          "type":"string"
+        },
         "data": {"type":"object"},
         "id": {"type":"integer"},
         "inputs": {"type":"object"},
-        "name": {"type":"string"},
         "outputs": {
           "type": "object",
           "additionalProperties": {

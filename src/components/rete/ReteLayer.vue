@@ -10,9 +10,11 @@ import { defineComponent } from 'vue'
 import { NodeEditor, Engine } from "rete";
 import ConnectionPlugin from 'rete-connection-plugin';
 import VueRenderPlugin from 'rete-vue-render-plugin';
-import ReteBlocks from './blocks'
 
 import { appState  } from '../../_app'
+
+import { Components, CreateNode, register } from './components'
+
 import ReteCustomNode from './ReteCustomNode.vue'
 
 
@@ -50,34 +52,21 @@ export default defineComponent({
 
     let editor = new NodeEditor(ENGINE_V, container)
     let engine = new Engine(ENGINE_V);
+    register(editor, engine)
 
-    editor.use(ConnectionPlugin)
+    editor.use(ConnectionPlugin);
     
-    
-    editor.use(VueRenderPlugin,{
-      component: ReteCustomNode
-    })
+    editor.use(VueRenderPlugin, { component: ReteCustomNode });
 
-    const blocks: any = ReteBlocks
-
-    const components: any = { }
-
-    for( let blockName in blocks ){
-      components[blockName] = new blocks[blockName]()
-      editor.register(components[blockName])
-      engine.register(components[blockName])
-
-    }
-
-    ( new Array(5).fill("") ).map( async (e,id) => {
-      const newNode = await components['TextComponent'].createNode({num: 2 + id})
-      console.log(id)
+    ( new Array(2).fill("") ).map( async (e: any,id: any) => {
+      const newNode = await CreateNode('constant', {num: 2 + id}, {}) 
       newNode.position = [80 * id, 400 * id];
     
 
       editor.addNode(newNode);
       return newNode
     })
+
 
 
     console.log('-------------------------- RETE STARTE')
