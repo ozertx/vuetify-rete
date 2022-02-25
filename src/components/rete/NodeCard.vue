@@ -25,6 +25,11 @@
         color="grey"
       ></v-list-item-avatar>
     </v-list-item>
+---{{ node }}---
+    <v-card-text v-if="controls().length">
+            <div v-for="(control,id) in controls()" :key="id" v-control="control" >
+            </div>
+    </v-card-text>
 
     <v-card-actions>
       <v-btn @click=" lnode.props.data.num++ "
@@ -41,6 +46,7 @@
 <script lang="ts">
  
   import { defineComponent } from 'vue'
+  import VueRender from 'rete-vue-render-plugin';
 
   
   const componentDefinition = defineComponent({
@@ -59,6 +65,7 @@
         required:true
       },
     },
+    mixins: VueRender.Node.mixins,
 		components: { 
 		},
     computed: {

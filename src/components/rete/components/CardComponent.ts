@@ -1,7 +1,9 @@
-import Controls from '../controls'
+import { Controls } from '../controls'
 import Socket from '../ReteSockets'
 import Rete from "rete";
 
+
+console.log("Controls", Controls)
 // export * from './split'
 // export * from './map'
 // export * from './request'
@@ -21,7 +23,7 @@ class CardComponent extends Rete.Component {
   config: CardComponentConfig
 
   constructor(name: string, config: CardComponentConfig) {
-    console.log("build", name, config)
+    // console.log("build", name, config)
     super(name);
     this.config = config
 	}
@@ -40,18 +42,34 @@ class CardComponent extends Rete.Component {
     
     for (const name in this.config.controls) {
       const conf = this.config.controls[name]
+      console.log(conf)
+      console.log(Controls)
+      const Control: any = Controls[conf.kind]
+      console.log(Control)
 
-      const control = new Controls[name](this.editor, name, conf.title, false, conf)
+      if(!Control) {
+        const msg = `Control kind ${conf.kind} not found. Use: ${Object.keys(Controls).join(', ')}`
+        console.error(msg)
+        throw new Error(msg)
+      }
+
+
+
+      const control: any = new Control(this.editor, name, conf.kind, false, conf)
       node.addControl(control)
     }
 		return node
 	}
 
 	async worker(node: any, inputs: any, outputs: any) {
-		console.log('in-->',node.name,inputs)
-		console.log(node.name,'out-->',outputs)
-		console.log(node.data)
-		outputs['out1'] = node.data.value
+
+    for (const name in this.config.outputs) {
+      const conf = this.config.outputs[name]
+
+      console.log('data', name, node.data)
+      console.log('inputs', name, node.inputs)
+      outputs[name] = await conf.calc(inputs, node.data, conf)
+    }
 	}
 }
 

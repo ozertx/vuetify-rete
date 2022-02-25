@@ -1,12 +1,11 @@
 {
-  "$ref": "#/definitions/nodeDefinition",
+  "$ref": "#/definitions/controlDefinition",
   "definitions": {
-    "nodeDefinition": {
+    "controlDefinition": {
       "type": "object",
-      "required": ["kind", "type", "defaultParams"],
+      "required": ["kind", "defaultParams"],
       "properties": {
         "kind": { "type": "string" },
-        "type": { "enum":["TextArea", "Label"]},
         "defaultParams": {"type":"object"}
       }
     }

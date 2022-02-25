@@ -1,4 +1,4 @@
-const definitions: { [key:string]: any } = {
+const ControlDefinitions: { [key:string]: any } = {
 
   "text": {
     "kind": "CardControl",
@@ -10,4 +10,4 @@ const definitions: { [key:string]: any } = {
 
 }
 
-export default definitions
+export { ControlDefinitions }

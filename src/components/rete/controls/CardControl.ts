@@ -1,9 +1,13 @@
 import { Control } from 'rete';
 import { validate } from '../../../_app'
 
-import * as TextArea from './TextArea.vue';
-import * as Label from './Label.vue';
+import TextArea from './TextArea.vue';
+import Label from './Label.vue';
 const controlComponents: any = { TextArea, Label }
+const ControlsComponent: any = {
+  text: TextArea,
+  label: Label
+}
 
 
 export class CardControl extends Control {
@@ -12,19 +16,22 @@ export class CardControl extends Control {
   props: any
   vueContext: any
 
-  constructor(emitter: any, key: any, type: any, readonly: any) {
+  constructor(emitter: any, key: any, type: any, readonly: any, config: any) {
     super(key);
 
-    const definition: any = controlComponents[type]
+    const definition: any = ControlsComponent[type]
+
+    console.log('ERR', definition)
 
     if (!definition) {
-      throw new Error(`not found component with type:${type}`)
+      throw new Error(`not found control-component with type:${type},  Use: ${Object.keys(controlComponents).join(', ')}`)
     }
 
-    if (!validate['control-definition-schema'](definition)) {
+    if (!validate['control-definition-schema'](config)) {
 
-      console.log(`control-definition-schema`, definition)
-      console.log(validate['control-definition-schema'].errors)
+      console.info(`config control-definition-schema validation error`)
+      console.info(`config`, config)
+      validate['control-definition-schema'].errors.forEach( (e: any) => console.log('err',e))
       const error = {
         error: `invalid control-definition-schema schema`,
         item: definition,

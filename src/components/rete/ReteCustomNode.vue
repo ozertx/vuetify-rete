@@ -40,9 +40,8 @@
       console.log(this.$props)
       
       const app = createApp(NodeCard, { 
-        instance: this, 
-        node: this.$props.node, 
-        editor: this.$props.editor 
+        ...this.$props,        
+        instance: this 
       })
 
       app

@@ -1,5 +1,5 @@
 import { CardControl } from "./CardControl"
-import ControlDefinitions from './ControlDefinitions'
+import { ControlDefinitions }from './ControlDefinitions'
 import * as Control from '../controls'
 import Socket from '../ReteSockets'
 import Rete from "rete";
@@ -32,4 +32,4 @@ for (const controlName in ControlDefinitions) {
 }
 
 
-export default Controls
+export { Controls }

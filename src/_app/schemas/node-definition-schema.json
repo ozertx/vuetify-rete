@@ -8,7 +8,7 @@
         "kind": { "type": "string" },
         "defaultParams": {"type":"object"},
         "outputs": { "$ref": "#/definitions/outputs" },
-        "inputs": { "type": "object" },
+        "inputs": { "$ref": "#/definitions/inputs" },
         "controls": { "type": "object" }
       }
     },
@@ -19,6 +19,20 @@
     "output": {
       "type": "object",
       "required": ["title", "socket", "calc"],  
+
+      "properties": {
+        "title": { "type": "string" },
+        "socket": { "type": "string" },
+        "calc": { }
+      }
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/definitions/input" }
+    },
+    "input": {
+      "type": "object",
+      "required": ["title", "socket"],  
 
       "properties": {
         "title": { "type": "string" },
