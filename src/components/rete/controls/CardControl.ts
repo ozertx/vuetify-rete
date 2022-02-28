@@ -1,17 +1,19 @@
 import { Control } from 'rete';
 import { validate } from '../../../_app'
+import { ControlDefinitions } from './ControlDefinitions'
 
-import * as TextArea from './control-components/ControlTextArea.vue';
-import * as Label from './control-components/ControlLabel.vue';
-const controlComponents: any = { TextArea, Label }
-const ControlsComponent: any = {
-  text: TextArea,
-  label: Label
-}
+import * as ControlTextArea from './control-components/ControlTextArea.vue';
+import * as ControlLabel from './control-components/ControlLabel.vue';
+const controlComponents: any = { ControlTextArea, ControlLabel }
+// const ControlsComponent: any = {
+//   text: TextArea,
+//   label: Label
+// }
 
 
 export class CardControl extends Control {
 
+  controlDefinition: any
   component: any
   props: any
   vueContext: any
@@ -19,12 +21,12 @@ export class CardControl extends Control {
   constructor(emitter: any, key: any, type: any, readonly: any, config: any) {
     super(key);
 
-    const controlDefinition: any = ControlsComponent[type]
-
-    console.log('card contrrol', type, controlDefinition)
-
+    const controlDefinition: any = ControlDefinitions[type]
+    this.controlDefinition = controlDefinition
+    
     if (!controlDefinition) {
-      throw new Error(`not found control-component with type:${type},  Use: ${Object.keys(controlComponents).join(', ')}`)
+      // console.log("-----------------------!!!",this.controlDefinition)
+      throw new Error(`not found control-definition with type:${type},  Use: ${Object.keys(ControlDefinitions).join(', ')}`)
     }
 
     // if (!validate['control-definition-schema'](config)) {
@@ -40,8 +42,12 @@ export class CardControl extends Control {
 
     //   throw new Error(error.error)
     // }
+    const controlComponent = controlComponents[controlDefinition.component]
+    if (!controlComponent) {
+      throw new Error(`not found control-component with type:${type},  Use: ${Object.keys(controlComponents).join(', ')}`)
+    }
 
-    this.component = controlDefinition;
+    this.component = controlComponent;
     this.props = { emitter, ikey: key, type, readonly, change: () => this.onChange(), config };
   }
   setValue(value: any) {

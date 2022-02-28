@@ -7,7 +7,7 @@
     props: {{ nodeConfig  }}
     <br>
     <br>
-    nodeInstance: {{nodeInstance}}
+    <!-- nodeInstance: {{nodeInstance}} -->
     <v-list-item three-line>
       <v-list-item-content>
         <div class="text-overline mb-4">

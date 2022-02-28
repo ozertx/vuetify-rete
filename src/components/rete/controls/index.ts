@@ -2,7 +2,9 @@ import { CardControl } from "./CardControl"
 import { ControlDefinitions }from './ControlDefinitions'
 import { validate } from '../../../_app'
 
-const nameIt = (name: string, cls: any) => ({ [name]: class extends cls { } })[name];
+const nameIt = (name: string, cls: any) => ({ 
+  [name]: class extends cls { } 
+})[name];
 
 const Controls: any = {}
 
@@ -23,6 +25,8 @@ for (const controlName in ControlDefinitions) {
   }
   
   Controls[controlName] = nameIt(controlName, CardControl);
+
+  Controls[controlName].controlDefinition = def
 }
 
 

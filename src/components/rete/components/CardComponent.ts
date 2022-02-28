@@ -42,10 +42,7 @@ class CardComponent extends Rete.Component {
     
     for (const name in this.config.controls) {
       const conf = this.config.controls[name]
-      console.log(conf)
-      console.log(Controls)
       const Control: any = Controls[conf.kind]
-      console.log(Control)
 
       if(!Control) {
         const msg = `Control kind ${conf.kind} not found. Use: ${Object.keys(Controls).join(', ')}`
