@@ -4,7 +4,7 @@
     max-width="344"
     outlined
   >
-    props: {{ nodeConfig  }}
+    <!-- props: {{ nodeConfig  }} -->
     <br>
     <br>
     <!-- nodeInstance: {{nodeInstance}} -->

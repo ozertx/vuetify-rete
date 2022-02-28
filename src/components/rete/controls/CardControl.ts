@@ -2,13 +2,9 @@ import { Control } from 'rete';
 import { validate } from '../../../_app'
 import { ControlDefinitions } from './ControlDefinitions'
 
-import * as ControlTextArea from './control-components/ControlTextArea.vue';
-import * as ControlLabel from './control-components/ControlLabel.vue';
+import ControlTextArea from './control-components/ControlTextArea.vue';
+import ControlLabel from './control-components/ControlLabel.vue';
 const controlComponents: any = { ControlTextArea, ControlLabel }
-// const ControlsComponent: any = {
-//   text: TextArea,
-//   label: Label
-// }
 
 
 export class CardControl extends Control {
@@ -23,7 +19,8 @@ export class CardControl extends Control {
 
     const controlDefinition: any = ControlDefinitions[type]
     this.controlDefinition = controlDefinition
-    
+    // console.log("-----------------------!!!",type,this.controlDefinition)
+
     if (!controlDefinition) {
       // console.log("-----------------------!!!",this.controlDefinition)
       throw new Error(`not found control-definition with type:${type},  Use: ${Object.keys(ControlDefinitions).join(', ')}`)
@@ -48,6 +45,8 @@ export class CardControl extends Control {
     }
 
     this.component = controlComponent;
+    // console.log('this.component = controlComponent;', this.component)
+
     this.props = { emitter, ikey: key, type, readonly, change: () => this.onChange(), config };
   }
   setValue(value: any) {

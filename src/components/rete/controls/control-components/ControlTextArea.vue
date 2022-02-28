@@ -13,35 +13,36 @@
 
 
 <script>
+  import { defineComponent } from 'vue'
 
-export default {
-  name: "TextareaControll",
-  props: ['initial', 'readonly', 'emitter', 'ikey', 'type', 'change', 'getData', 'putData'],
-  data() {
-    return {
-      value: this.initial || 0,
-    }
-  },
-  methods: {
-    parse(value) {
-      return this.type === 'number' ? +value : value;
-    },
-    onChange(e){
-      this.value = this.parse(e.target.value);
-      this.update();
-    },
-    update() {
-      if (this.ikey) {
-        this.putData(this.ikey, this.value)
-        this.change(this.value);
+  export default defineComponent({
+    name: "TextareaControll",
+    props: ['initial', 'readonly', 'emitter', 'ikey', 'type', 'change', 'getData', 'putData'],
+    data() {
+      return {
+        value: this.initial || 0,
       }
-      this.emitter.trigger('process');
+    },
+    methods: {
+      parse(value) {
+        return this.type === 'number' ? +value : value;
+      },
+      onChange(e){
+        this.value = this.parse(e.target.value);
+        this.update();
+      },
+      update() {
+        if (this.ikey) {
+          this.putData(this.ikey, this.value)
+          this.change(this.value);
+        }
+        this.emitter.trigger('process');
+      }
+    },
+    mounted() {
+      this.value = this.getData(this.ikey);
     }
-  },
-  mounted() {
-    this.value = this.getData(this.ikey);
-  }
-}
+  })
 </script>
 
 

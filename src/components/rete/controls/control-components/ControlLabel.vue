@@ -1,26 +1,28 @@
 <template>
   <div>
-    {{ value }}
+    control - label{{ value }}
   </div>
 </template>
 
 
 <script>
 
-export default {
-  name: "LabelControl",
-  props: ['initial', 'readonly', 'emitter', 'ikey', 'type', 'change', 'getData', 'putData'],
-  data() {
-    return {
-      value: this.initial || "",
+  import { defineComponent } from 'vue'
+
+  export default defineComponent({
+    name: "LabelControl",
+    props: ['initial', 'readonly', 'emitter', 'ikey', 'type', 'change', 'getData', 'putData'],
+    data() {
+      return {
+        value: this.initial || "",
+      }
+    },
+    methods: {
+    },
+    mounted() {
+      this.value = this.getData(this.ikey);
     }
-  },
-  methods: {
-  },
-  mounted() {
-    this.value = this.getData(this.ikey);
-  }
-}
+  })
 </script>
 
 
