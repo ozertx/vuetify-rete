@@ -2,12 +2,18 @@ const ControlDefinitions: { [key:string]: any } = {
 
   "text": {
     "kind": "CardControl",
-    "type": "Label",
+    "component": "ControlTextArea",
+    "defaultParams": {
+      "value": ""
+    }
+  },
+  "label": {
+    "kind": "CardControl",
+    "component": "ControlLabel",
     "defaultParams": {
       "value": ""
     }
   }
-
 }
 
 export { ControlDefinitions }

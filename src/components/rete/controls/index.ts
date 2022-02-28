@@ -1,14 +1,8 @@
 import { CardControl } from "./CardControl"
 import { ControlDefinitions }from './ControlDefinitions'
-import * as Control from '../controls'
-import Socket from '../ReteSockets'
-import Rete from "rete";
 import { validate } from '../../../_app'
 
-
 const nameIt = (name: string, cls: any) => ({ [name]: class extends cls { } })[name];
-
-
 
 const Controls: any = {}
 

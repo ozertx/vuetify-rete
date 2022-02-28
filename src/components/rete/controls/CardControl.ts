@@ -1,8 +1,8 @@
 import { Control } from 'rete';
 import { validate } from '../../../_app'
 
-import TextArea from './TextArea.vue';
-import Label from './Label.vue';
+import * as TextArea from './control-components/ControlTextArea.vue';
+import * as Label from './control-components/ControlLabel.vue';
 const controlComponents: any = { TextArea, Label }
 const ControlsComponent: any = {
   text: TextArea,
@@ -19,30 +19,30 @@ export class CardControl extends Control {
   constructor(emitter: any, key: any, type: any, readonly: any, config: any) {
     super(key);
 
-    const definition: any = ControlsComponent[type]
+    const controlDefinition: any = ControlsComponent[type]
 
-    console.log('ERR', definition)
+    console.log('card contrrol', type, controlDefinition)
 
-    if (!definition) {
+    if (!controlDefinition) {
       throw new Error(`not found control-component with type:${type},  Use: ${Object.keys(controlComponents).join(', ')}`)
     }
 
-    if (!validate['control-definition-schema'](config)) {
+    // if (!validate['control-definition-schema'](config)) {
 
-      console.info(`config control-definition-schema validation error`)
-      console.info(`config`, config)
-      validate['control-definition-schema'].errors.forEach( (e: any) => console.log('err',e))
-      const error = {
-        error: `invalid control-definition-schema schema`,
-        item: definition,
-        errors: validate['app-config'].errors,
-      }
+    //   console.info(`config control-definition-schema validation error`)
+    //   console.info(`config`, config)
+    //   validate['control-definition-schema'].errors.forEach( (e: any) => console.log('err',e))
+    //   const error = {
+    //     error: `invalid control-definition-schema schema`,
+    //     item: controlDefinition,
+    //     errors: validate['control-definition-schema'].errors,
+    //   }
 
-      throw new Error(error.error)
-    }
+    //   throw new Error(error.error)
+    // }
 
-    this.component = definition;
-    this.props = { emitter, ikey: key, type, readonly, change: () => this.onChange() };
+    this.component = controlDefinition;
+    this.props = { emitter, ikey: key, type, readonly, change: () => this.onChange(), config };
   }
   setValue(value: any) {
     const ctx = this.vueContext || this.props;

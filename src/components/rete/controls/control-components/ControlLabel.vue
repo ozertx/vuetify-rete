@@ -8,7 +8,7 @@
 <script>
 
 export default {
-  name: "ControlLabel",
+  name: "LabelControl",
   props: ['initial', 'readonly', 'emitter', 'ikey', 'type', 'change', 'getData', 'putData'],
   data() {
     return {

@@ -15,7 +15,7 @@
 <script>
 
 export default {
-  name: "ComponentTextarea",
+  name: "TextareaControll",
   props: ['initial', 'readonly', 'emitter', 'ikey', 'type', 'change', 'getData', 'putData'],
   data() {
     return {

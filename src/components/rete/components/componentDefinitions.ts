@@ -52,7 +52,14 @@ const definitions: { [key:string]: any } = {
           "value": "0"
         },
         "title": "explainInputs - title"
-      }
+      },
+      "titleLabel": {
+        "kind": "label",
+        "defaultParams": {
+          "value": "blank text"
+        },
+        "title": "explainInputs - title"
+      },
     }
   },
 

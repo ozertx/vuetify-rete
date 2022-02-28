@@ -25,7 +25,7 @@
         color="grey"
       ></v-list-item-avatar>
     </v-list-item>
----{{ node }}---
+<!-- ---{{ node }}--- -->
     <v-card-text v-if="controls().length">
             <div v-for="(control,id) in controls()" :key="id" v-control="control" >
             </div>

@@ -15,12 +15,17 @@ async function start() {
   loadFonts()
   
   console.info('CREATE APP --------')
-  createApp(App)
+  const app = createApp(App)
+  app
     .use(router)
     .use(vuetify)
     .use(TreeView)
-    .mount('#app')
   
+  // app.component
+
+  app.mount('#app')
+  
+
 }
 start()
 

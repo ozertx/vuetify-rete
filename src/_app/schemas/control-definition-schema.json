@@ -3,10 +3,15 @@
   "definitions": {
     "controlDefinition": {
       "type": "object",
-      "required": ["kind", "defaultParams"],
+      "required": ["kind", "defaultParams", "component"],
       "properties": {
         "kind": { "type": "string" },
-        "defaultParams": {"type":"object"}
+        "defaultParams": {"type":"object"},
+        "componet": {
+          "enum":[ "ControlLabel" ]
+
+        }
+        
       }
     }
   }
